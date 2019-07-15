@@ -39,38 +39,39 @@ export default function SunSchedule() {
     getSunSchedule();
   }, [date]);
 
-  if (loading) {
-    return <h1 class='text-center'>Loading...</h1>;
-  }
   return (
     <div className='container'>
       <div>
-        <h1>Please select the date</h1>
+        <h3>Select the date</h3>
         <div>
           <DatePicker
             aria-label='date'
             selected={date}
             onChange={e => setDate(e)}
           />
-          <dl>
-            {sunShedule.map(listitem => (
-              <React.Fragment key={listitem.lat}>
-                <dt>{listitem.name}</dt>
-                <dd>
-                  <span role='img' aria-label='sunrise'>
-                    🌅
-                  </span>
-                  {listitem.sunrise}
-                </dd>
-                <dd>
-                  <span role='img' aria-label='sunset'>
-                    🌄
-                  </span>
-                  {listitem.sunset}
-                </dd>
-              </React.Fragment>
-            ))}
-          </dl>
+          {loading ? (
+            <h4 class='text-center'>Loading...</h4>
+          ) : (
+            <dl>
+              {sunShedule.map(listitem => (
+                <React.Fragment key={listitem.lat}>
+                  <dt>{listitem.name}</dt>
+                  <dd>
+                    <span role='img' aria-label='sunrise'>
+                      🌅
+                    </span>
+                    {listitem.sunrise}
+                  </dd>
+                  <dd>
+                    <span role='img' aria-label='sunset'>
+                      🌄
+                    </span>
+                    {listitem.sunset}
+                  </dd>
+                </React.Fragment>
+              ))}
+            </dl>
+          )}
         </div>
       </div>
     </div>
