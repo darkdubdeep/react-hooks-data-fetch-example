@@ -40,10 +40,10 @@ export default function SunSchedule() {
   }, [date]);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <h1 class='text-center'>Loading...</h1>;
   }
   return (
-    <div className='Instructions'>
+    <div className='container'>
       <div>
         <h1>Please select the date</h1>
         <div>
